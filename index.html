@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop de Prompts Multimodelo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="badge">Taller de calidad</p>
+      <h1>Mejora prompts para ChatGPT, Midjourney, DALL·E, Gemini y Codex</h1>
+      <p class="lede">Afina instrucciones con una interfaz ligera, estable y centrada en la claridad. Ajusta intención, estilo y nivel de detalle para cada modelo.</p>
+      <div class="cta-group">
+        <button class="btn btn-primary" id="btn-example">Ver ejemplo</button>
+        <button class="btn btn-secondary" id="btn-reset">Reiniciar</button>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <div class="card stats">
+        <div>
+          <p class="label">Modelos</p>
+          <p class="value">5</p>
+        </div>
+        <div>
+          <p class="label">Plantillas</p>
+          <p class="value">12</p>
+        </div>
+        <div>
+          <p class="label">Estabilidad</p>
+          <p class="value">100% local</p>
+        </div>
+      </div>
+      <p class="hint">No se envían datos a servidores externos. Todo se ejecuta en el navegador.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="workspace">
+      <div class="panel">
+        <div class="panel__header">
+          <div>
+            <p class="label">Modelo objetivo</p>
+            <h2 id="model-title">ChatGPT / GPT‑4.x</h2>
+          </div>
+          <select id="model-select">
+            <option value="chatgpt" selected>ChatGPT / GPT‑4.x</option>
+            <option value="midjourney">Midjourney</option>
+            <option value="dalle">DALL·E</option>
+            <option value="gemini">Gemini</option>
+            <option value="codex">Codex</option>
+          </select>
+        </div>
+        <label class="label" for="prompt-input">Prompt base</label>
+        <textarea id="prompt-input" rows="6" placeholder="Escribe lo que quieres lograr..."></textarea>
+
+        <div class="grid">
+          <div>
+            <label class="label" for="goal-input">Objetivo</label>
+            <input id="goal-input" type="text" placeholder="Ej. generar ideas de campaña, diseñar logo, refactorizar código" />
+          </div>
+          <div>
+            <label class="label" for="audience-input">Audiencia/Contexto</label>
+            <input id="audience-input" type="text" placeholder="Ej. equipo marketing, equipo ingeniería, clientes retail" />
+          </div>
+        </div>
+
+        <div class="grid">
+          <div>
+            <label class="label" for="tone-select">Tono</label>
+            <select id="tone-select">
+              <option value="claro y conciso">Claro y conciso</option>
+              <option value="creativo">Creativo</option>
+              <option value="técnico">Técnico</option>
+              <option value="empático">Empático</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="format-select">Formato esperado</label>
+            <select id="format-select">
+              <option value="lista numerada">Lista numerada</option>
+              <option value="paso a paso">Paso a paso</option>
+              <option value="tabla">Tabla</option>
+              <option value="código">Código</option>
+              <option value="párrafo breve">Párrafo breve</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="label" for="constraints-input">Requisitos / restricciones</label>
+        <input id="constraints-input" type="text" placeholder="Ej. 5 variantes, sin usar jerga, 150 palabras, resolución 1024x1024" />
+
+        <div class="actions">
+          <button class="btn btn-primary" id="btn-enhance">Mejorar prompt</button>
+          <button class="btn" id="btn-copy">Copiar</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__header">
+          <div>
+            <p class="label">Prompt mejorado</p>
+            <h2>Versión lista para usar</h2>
+          </div>
+          <p class="pill" id="model-guideline">Guía rápida de ChatGPT</p>
+        </div>
+        <pre id="output" class="output" aria-live="polite"></pre>
+
+        <div class="subpanel">
+          <h3>Buenas prácticas sugeridas</h3>
+          <ul id="guidelines" class="guidelines"></ul>
+        </div>
+
+        <div class="subpanel">
+          <h3>Plantillas rápidas</h3>
+          <div id="templates" class="template-grid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Diseñado para iterar prompts en local con una UI mínima y estable. Ajusta variables clave y reutiliza plantillas sin depender de terceros.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
