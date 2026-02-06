@@ -118,6 +118,14 @@ const sampleState = {
   constraints: 'Sin jerga técnica, tono cercano, máximo 120 palabras cada propuesta',
 };
 
+const modelRoles = {
+  chatgpt: 'Redacta como estratega de prompts conversacionales.',
+  midjourney: 'Redacta como director de arte que optimiza prompts visuales.',
+  dalle: 'Redacta como ilustrador digital para prompts concisos.',
+  gemini: 'Redacta como analista que contrasta ejemplos y contraejemplos.',
+  codex: 'Redacta como tech lead que prepara especificaciones de código.',
+};
+
 const elements = {
   modelSelect: document.getElementById('model-select'),
   modelTitle: document.getElementById('model-title'),
@@ -150,19 +158,22 @@ function buildPrompt(modelKey) {
     return;
   }
 
-  const blocks = [
-    `Modelo: ${modelConfig[modelKey].name}.`,
-    `Objetivo: ${goal || '—'}. Público o contexto: ${audience || '—'}.`,
-    `Instrucción: ${prompt}`,
-    `Tono: ${tone}. Formato esperado: ${format}.`,
-    constraints ? `Restricciones: ${constraints}.` : null,
+  const sections = [
+    `Rol + modelo → ${modelRoles[modelKey]} Usa ${modelConfig[modelKey].name}.`,
+    `Objetivo específico → ${goal || prompt}.`,
+    `Audiencia / contexto → ${audience || 'No especificado; pregunta antes de avanzar si es crítico.'}`,
+    `Entrada base → ${prompt}`,
+    `Estilo y formato → tono ${tone}; devolver en ${format}.`,
+    constraints
+      ? `Restricciones y métricas → ${constraints}.`
+      : 'Restricciones y métricas → añade límites (palabras, variantes, estilo) si no están claros.',
     modelKey === 'codex'
-      ? 'Explica supuestos antes de codificar. Incluye comentarios breves y un test unitario simple.'
-      : 'Si algo falta, pide clarificar antes de responder.',
-    'Devuelve la respuesta y verifica que cumpla con formato y restricciones.',
-  ].filter(Boolean);
+      ? 'Proceso → antes de codificar, aclara supuestos y dependencias; explica brevemente cambios y añade una prueba unitaria simple.'
+      : 'Proceso → valida si falta contexto clave, comparte un plan breve y sugiere ajustes si algo está ambiguo.',
+    'Entrega final → aplica los ajustes, separa en secciones claras, etiqueta cada bloque y verifica que tono y formato se cumplan.',
+  ];
 
-  elements.output.textContent = blocks.join('\n\n');
+  elements.output.textContent = sections.join('\n\n');
 }
 
 function renderGuidelines(modelKey) {
