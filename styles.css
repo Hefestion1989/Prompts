@@ -22,6 +22,7 @@ body {
     radial-gradient(circle at 80% 0%, rgba(122, 231, 199, 0.1), transparent 30%),
     var(--bg);
   min-height: 100vh;
+  line-height: 1.6;
 }
 
 h1, h2, h3 {
@@ -38,6 +39,8 @@ p {
   grid-template-columns: 1.2fr 0.8fr;
   gap: 24px;
   padding: 48px 56px 24px;
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
 .hero__content h1 {
@@ -108,6 +111,8 @@ p {
 
 main {
   padding: 0 56px 48px;
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
 .workspace {
@@ -122,6 +127,7 @@ main {
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
 }
 
 .panel__header {
@@ -141,6 +147,15 @@ select, textarea, input {
   color: var(--text);
   font-family: var(--font);
   font-size: 14px;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+select:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: none;
+  border-color: rgba(122, 231, 199, 0.7);
+  box-shadow: 0 0 0 3px rgba(122, 231, 199, 0.12);
 }
 
 textarea {
@@ -192,11 +207,25 @@ textarea {
   background: #0c1321;
   border-radius: 12px;
   border: 1px solid var(--border);
-  padding: 16px;
+  padding: 20px 16px 16px;
   min-height: 220px;
   white-space: pre-wrap;
   font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
   color: #d6e4ff;
+  line-height: 1.55;
+  position: relative;
+}
+
+.output::before {
+  content: 'Prompt listo';
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: rgba(122, 231, 199, 0.12);
+  color: var(--accent);
 }
 
 .subpanel {
@@ -222,6 +251,7 @@ textarea {
   border: 1px solid var(--border);
   background: #0c1321;
   color: var(--muted);
+  line-height: 1.4;
 }
 
 .template-grid {
@@ -268,6 +298,9 @@ textarea {
   margin: 24px 56px 40px;
   color: var(--muted);
   line-height: 1.5;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 1024px) {
@@ -279,6 +312,7 @@ textarea {
 @media (max-width: 640px) {
   main, .hero {
     padding: 24px;
+    max-width: none;
   }
 
   .grid {
