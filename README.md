@@ -4,6 +4,10 @@ Aplicacion web estatica para disenar y mejorar prompts destinados a ChatGPT, GPT
 
 Este repositorio es la version simple y offline del taller de prompts: no requiere servidor, build, cuenta ni API key. Todo corre en el navegador.
 
+## Demo publica
+
+[https://hefestion1989.github.io/Prompts/](https://hefestion1989.github.io/Prompts/)
+
 ## Para que sirve
 
 - Convertir una idea inicial en un prompt mas claro y estructurado.
@@ -13,21 +17,19 @@ Este repositorio es la version simple y offline del taller de prompts: no requie
 
 ## Como usar
 
-1. Abre `index.html` en tu navegador.
+1. Abre la demo publica o `index.html` en tu navegador.
 2. Selecciona el modelo objetivo.
 3. Escribe un prompt base.
 4. Completa objetivo, audiencia, tono, formato y restricciones.
 5. Pulsa **Mejorar prompt** y copia el resultado.
 
-## Compartir con otras personas
+## Por que existe
 
-- Version publicada: comparte el enlace de GitHub Pages si esta activo, por ejemplo `https://hefestion1989.github.io/Prompts/`.
-- Uso local: descarga el repositorio y abre `index.html`.
-- Copia propia: haz un fork y activa GitHub Pages desde `Settings -> Pages`, rama `main`, carpeta raiz.
+Prompts Workshop prioriza simplicidad y estabilidad: HTML, CSS y JavaScript sin dependencias externas. Es util para compartir rapido, usar sin configuracion o mantener una herramienta liviana de trabajo personal.
 
 ## Relacion con PromptMaster AI
 
-Este repo prioriza simplicidad y estabilidad: HTML, CSS y JavaScript sin dependencias externas.
+Este repo es la version estatica y offline.
 
 Si buscas una version mas ambiciosa, con React y asistencia mediante Gemini, mira [`promptmaster-ai`](https://github.com/Hefestion1989/promptmaster-ai).
 
@@ -39,4 +41,8 @@ Si buscas una version mas ambiciosa, con React y asistencia mediante Gemini, mir
 
 ## Estado
 
-Estable como utilidad local/offline. Ideal para compartir rapido o usar sin configuracion.
+Estable como utilidad local/offline y demo publica simple.
+
+## Relacion con el portfolio
+
+Prompts Workshop forma parte del mapa de proyectos en [`portfolio-proyectos`](https://github.com/Hefestion1989/portfolio-proyectos).
