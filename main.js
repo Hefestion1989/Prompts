@@ -1,6 +1,6 @@
 const modelConfig = {
   chatgpt: {
-    name: 'ChatGPT / GPT‑4.x',
+    name: 'ChatGPT',
     pill: 'Guía rápida de ChatGPT',
     guidelines: [
       'Pide rol + objetivo + criterios de calidad',
@@ -195,10 +195,26 @@ function renderTemplates(modelKey) {
     card.innerHTML = `<h4>${tpl.title}</h4><p>${tpl.description}</p>`;
     card.addEventListener('click', () => {
       elements.promptInput.value = tpl.prompt;
+      clearSupportingFields();
       buildPrompt(modelKey);
     });
     elements.templates.appendChild(card);
   });
+}
+
+function clearSupportingFields() {
+  elements.goalInput.value = '';
+  elements.audienceInput.value = '';
+  elements.constraintsInput.value = '';
+}
+
+function isShowingExample() {
+  return (
+    elements.promptInput.value === sampleState.prompt &&
+    elements.goalInput.value === sampleState.goal &&
+    elements.audienceInput.value === sampleState.audience &&
+    elements.constraintsInput.value === sampleState.constraints
+  );
 }
 
 function updateModel(modelKey) {
@@ -241,6 +257,7 @@ function copyOutput() {
 // Event listeners
 
 elements.modelSelect.addEventListener('change', (event) => {
+  if (isShowingExample()) resetForm();
   updateModel(event.target.value);
 });
 
@@ -259,5 +276,3 @@ elements.btnReset.addEventListener('click', resetForm);
 
 // Init
 updateModel('chatgpt');
-fillExample();
-buildPrompt('chatgpt');
