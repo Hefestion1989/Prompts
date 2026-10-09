@@ -1,0 +1,8 @@
+{
+  "name": "prompts-workshop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:sites": "node scripts/build-sites.mjs"
+  }
+}

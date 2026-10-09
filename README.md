@@ -46,3 +46,7 @@ Estable como utilidad local/offline y demo publica simple.
 ## Relacion con el portfolio
 
 Prompts Workshop forma parte del mapa de proyectos en [`portfolio-proyectos`](https://github.com/Hefestion1989/portfolio-proyectos).
+
+## Build para ChatGPT Sites
+
+`npm run build:sites` copia la aplicación estática a `dist/` junto con los metadatos de Sites. No requiere instalar dependencias. La versión de GitHub Pages sigue usando los archivos originales de la raíz. La publicación requiere vincular este repositorio a un proyecto de Sites.
